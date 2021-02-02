@@ -10,6 +10,9 @@ import GastosPorCategoria from './components/GastosPorCategoria';
 import InicioSesion from './components/InicioSesion';
 import ListaGastos from './components/ListaGastos';
 import RegistroUsuarios from './components/RegistroUsuarios';
+import {Helmet} from "react-helmet";
+import favicon from './images/logo.png';
+import Fondo from './elements/Fondo';
 
 
 WebFont.load({
@@ -21,19 +24,26 @@ WebFont.load({
 
 const Index = () => {
   return ( 
-    <BrowserRouter>
-      <Contenedor>
-        <Switch>
-          <Route path="/iniciar-sesion" component={InicioSesion} />
-          <Route path="/crear-cuenta" component={RegistroUsuarios} />
-          <Route path="/categorias" component={GastosPorCategoria} />
-          <Route path="/lista" component={ListaGastos} />
-          <Route path="/editar/:id" component={EditarGasto} />
-          <Route path="/" component={App} />
-        </Switch>
- 
-      </Contenedor>
-    </BrowserRouter>
+    <>
+    <Helmet>
+      <link rel="shortcut icon" href={favicon} type="image/x-icon" />
+      
+    </Helmet>
+      <BrowserRouter>
+        <Contenedor>
+          <Switch>
+            <Route path="/iniciar-sesion" component={InicioSesion} />
+            <Route path="/crear-cuenta" component={RegistroUsuarios} />
+            <Route path="/categorias" component={GastosPorCategoria} />
+            <Route path="/lista" component={ListaGastos} />
+            <Route path="/editar/:id" component={EditarGasto} />
+            <Route path="/" component={App} />
+          </Switch>
+  
+        </Contenedor>
+      </BrowserRouter>
+      <Fondo />
+    </>
    );
 }
 
