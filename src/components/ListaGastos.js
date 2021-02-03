@@ -16,7 +16,7 @@ const ListaGastos = () => {
 
             </Header>
         </>
-     );
+    );
 }
- 
+
 export default ListaGastos;
