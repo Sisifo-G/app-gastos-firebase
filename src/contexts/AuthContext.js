@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
     });
 
     return cancelarSubscripcion;
-  });
+  }, []);
   return (
     <AuthContext.Provider value={{ usuario: usuario }}>
       {!cargando && children}
