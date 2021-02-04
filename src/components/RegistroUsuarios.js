@@ -11,6 +11,7 @@ import { ReactComponent as SvgLogin } from "./../images/registro.svg";
 import styled from "styled-components";
 import { auth } from "./../firebase/firebaseConfig";
 import { useHistory } from "react-router-dom";
+import Alerta from "./../elements/Alerta";
 
 const Svg = styled(SvgLogin)`
   width: 100%;
@@ -23,6 +24,8 @@ const RegistroUsuarios = () => {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [estadoAlerta, setEstadoAlerta] = useState(false);
+  const [alerta, setAlerta] = useState({});
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -42,21 +45,35 @@ const RegistroUsuarios = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEstadoAlerta(false);
+    setAlerta({});
 
     // Comprobamos del lado del cliente que el correo sea válido
     const expresionRegular = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/;
     if (!expresionRegular.test(correo)) {
-      console.log("Correo inválido");
+      setEstadoAlerta(true);
+      setAlerta({
+        tipo: "error",
+        mensaje: "Por favor ingrese un correo válido",
+      });
       return;
     }
 
     if (correo === "" || password === "" || password2 === "") {
-      console.log("Por favor ingresar todos los valores");
+      setEstadoAlerta(true);
+      setAlerta({
+        tipo: "error",
+        mensaje: "Por favor ingrese valores para todos los campos",
+      });
       return;
     }
 
     if (password !== password2) {
-      console.log("Las contraseñas no coinciden");
+      setEstadoAlerta(true);
+      setAlerta({
+        tipo: "error",
+        mensaje: "Las contraseñas no coinciden",
+      });
       return;
     }
 
@@ -64,6 +81,7 @@ const RegistroUsuarios = () => {
       await auth.createUserWithEmailAndPassword(correo, password);
       history.push("/");
     } catch (error) {
+      setEstadoAlerta(true);
       let mensaje;
       switch (error.code) {
         case "auth/invalid-password":
@@ -79,7 +97,7 @@ const RegistroUsuarios = () => {
           mensaje = "Hubo un error al intentar crear la cuenta";
           break;
       }
-      console.log(mensaje);
+      setAlerta({ tipo: "error", mensaje: mensaje });
     }
   };
 
@@ -125,6 +143,12 @@ const RegistroUsuarios = () => {
           </Boton>
         </ContenedorBoton>
       </Formulario>
+      <Alerta
+        tipo={alerta.tipo}
+        mensaje={alerta.mensaje}
+        estadoAlerta={estadoAlerta}
+        setEstadoAlerta={setEstadoAlerta}
+      />
     </>
   );
 };
