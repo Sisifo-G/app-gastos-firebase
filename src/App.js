@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import FormularioGasto from "./components/FormularioGasto";
 import Boton from "./elements/Boton";
 import BotonCerrarSesion from "./elements/BotonCerrarSesion";
 import {
@@ -25,6 +26,7 @@ function App() {
           </ContenedorBotones>
         </ContenedorHeader>
       </Header>
+      <FormularioGasto />
     </>
   );
 }
