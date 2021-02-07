@@ -8,10 +8,12 @@ import {
   ContenedorBoton,
 } from "./../elements/ElementosDeFormulario";
 import { ReactComponent as IconoPlus } from "./../images/plus.svg";
+import SelectCategorias from "./SelectCategorias";
 
 const FormularioGasto = () => {
   const [inputDescripcion, setInputDescripcion] = useState("");
   const [inputCantidad, setInputCantidad] = useState("");
+  const [categoria, setCategoria] = useState("hogar");
 
   const handleChange = (e) => {
     if (e.target.name === "descripcion") {
@@ -24,7 +26,7 @@ const FormularioGasto = () => {
   return (
     <Formulario>
       <ContenedorFiltros>
-        <p>Select</p>
+        <SelectCategorias categoria={categoria} setCategoria={setCategoria} />
         <p>DataPicker</p>
       </ContenedorFiltros>
       <div>
