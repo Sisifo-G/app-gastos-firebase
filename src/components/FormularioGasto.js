@@ -57,13 +57,14 @@ const FormularioGasto = () => {
           setAlerta({
             tipo: "exito",
             mensaje: "El gasto fue agregado correctamente",
-          }).catch((error) => {
-            setEstadoAlerta(true);
-            setAlerta({
-              tipo: "error",
-              mensaje: "Hubo un problema al intentar agregar tu gasto",
-            });
           });
+          // .catch((error) => {
+          //   setEstadoAlerta(true);
+          //   setAlerta({
+          //     tipo: "error",
+          //     mensaje: "Hubo un problema al intentar agregar tu gasto",
+          //   });
+          // });
         });
       } else {
         setEstadoAlerta(true);

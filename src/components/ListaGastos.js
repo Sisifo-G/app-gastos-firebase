@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import BtnRegresar from "../elements/BtnRegresar";
 import { Header, Titulo } from "./../elements/Header";
+import BarraTotalGastado from "./BarraTotalGastado";
 
 const ListaGastos = () => {
   return (
@@ -13,6 +14,7 @@ const ListaGastos = () => {
         <BtnRegresar ruta="/" />
         <Titulo>Lista de Gastos</Titulo>
       </Header>
+      <BarraTotalGastado />
     </>
   );
 };

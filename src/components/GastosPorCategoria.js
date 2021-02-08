@@ -1,22 +1,22 @@
-import React from 'react';
-import {Helmet} from 'react-helmet';
-import BtnRegresar from '../elements/BtnRegresar';
-import { Header, Titulo} from './../elements/Header';
+import React from "react";
+import { Helmet } from "react-helmet";
+import BtnRegresar from "../elements/BtnRegresar";
+import { Header, Titulo } from "./../elements/Header";
+import BarraTotalGastado from "./BarraTotalGastado";
 
 const GastosPorCategoria = () => {
-    return ( 
-        <>
-            <Helmet>
-            <title>Gastos por Categoría</title>
-            </Helmet>
-            <Header>
+  return (
+    <>
+      <Helmet>
+        <title>Gastos por Categoría</title>
+      </Helmet>
+      <Header>
+        <BtnRegresar ruta="/" />
+        <Titulo>Gastos por Categoría</Titulo>
+      </Header>
+      <BarraTotalGastado />
+    </>
+  );
+};
 
-                <BtnRegresar ruta="/"/>
-                <Titulo>Gastos por Categoría</Titulo>
-
-            </Header>
-        </>
-     );
-}
- 
 export default GastosPorCategoria;
