@@ -3,8 +3,11 @@ import { Helmet } from "react-helmet";
 import BtnRegresar from "../elements/BtnRegresar";
 import { Header, Titulo } from "./../elements/Header";
 import BarraTotalGastado from "./BarraTotalGastado";
+import useObtenerGastos from "./../hooks/useObtenerGastos";
 
 const ListaGastos = () => {
+  const [gastos] = useObtenerGastos();
+  console.log(gastos);
   return (
     <>
       <Helmet>
