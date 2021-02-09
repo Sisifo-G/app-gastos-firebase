@@ -17,10 +17,10 @@ const EditarGasto = () => {
         <title>Editar Gasto</title>
       </Helmet>
       <Header>
-        <BtnRegresar ruta="/" />
+        <BtnRegresar ruta="/lista" />
         <Titulo>Editar Gasto</Titulo>
       </Header>
-      <FormularioGasto />
+      <FormularioGasto gasto={gasto} />
       <BarraTotalGastado />
     </>
   );
