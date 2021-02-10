@@ -15,6 +15,7 @@ import favicon from "./images/logo.png";
 import Fondo from "./elements/Fondo";
 import { AuthProvider } from "./contexts/AuthContext";
 import RutaPrivada from "./components/RutaPrivada";
+import { TotalGastadoProvider } from "./contexts/TotalGastadoMesContext";
 
 WebFont.load({
   google: {
@@ -30,26 +31,28 @@ const Index = () => {
         <link rel="shortcut icon" href={favicon} type="image/x-icon" />
       </Helmet>
       <AuthProvider>
-        <BrowserRouter>
-          <Contenedor>
-            <Switch>
-              <Route path="/iniciar-sesion" component={InicioSesion} />
-              <Route path="/crear-cuenta" component={RegistroUsuarios} />
-              <RutaPrivada path="/categorias">
-                <GastosPorCategoria />
-              </RutaPrivada>
-              <RutaPrivada path="/lista">
-                <ListaGastos />
-              </RutaPrivada>
-              <RutaPrivada path="/editar/:id">
-                <EditarGasto />
-              </RutaPrivada>
-              <RutaPrivada path="/">
-                <App />
-              </RutaPrivada>
-            </Switch>
-          </Contenedor>
-        </BrowserRouter>
+        <TotalGastadoProvider>
+          <BrowserRouter>
+            <Contenedor>
+              <Switch>
+                <Route path="/iniciar-sesion" component={InicioSesion} />
+                <Route path="/crear-cuenta" component={RegistroUsuarios} />
+                <RutaPrivada path="/categorias">
+                  <GastosPorCategoria />
+                </RutaPrivada>
+                <RutaPrivada path="/lista">
+                  <ListaGastos />
+                </RutaPrivada>
+                <RutaPrivada path="/editar/:id">
+                  <EditarGasto />
+                </RutaPrivada>
+                <RutaPrivada path="/">
+                  <App />
+                </RutaPrivada>
+              </Switch>
+            </Contenedor>
+          </BrowserRouter>
+        </TotalGastadoProvider>
       </AuthProvider>
       <Fondo />
     </>
