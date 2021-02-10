@@ -3,12 +3,20 @@ import { Helmet } from "react-helmet";
 import BtnRegresar from "../elements/BtnRegresar";
 import { Header, Titulo } from "./../elements/Header";
 import BarraTotalGastado from "./BarraTotalGastado";
+import IconoCategoria from "./../elements/IconoCategoria";
+import convertirAMoneda from "./../funciones/convertirAMoneda";
 
 import useObtenerGastosMesPorCategoria from "./../hooks/useObtenerGastosMesPorCategoria";
+import {
+  ListaDeCategorias,
+  ElementoListaCategorias,
+  Categoria,
+  Valor,
+} from "./../elements/ElementosDeLista";
 
 const GastosPorCategoria = () => {
-  const gastos = useObtenerGastosMesPorCategoria();
-  console.log(gastos);
+  const gastosPorCategoria = useObtenerGastosMesPorCategoria();
+
   return (
     <>
       <Helmet>
@@ -18,6 +26,20 @@ const GastosPorCategoria = () => {
         <BtnRegresar ruta="/" />
         <Titulo>Gastos por Categoría</Titulo>
       </Header>
+      <ListaDeCategorias>
+        {gastosPorCategoria.map((elemento, index) => {
+          return (
+            <ElementoListaCategorias key={index}>
+              <Categoria>
+                <IconoCategoria nombre={elemento.categoria} />
+                {elemento.categoria}
+              </Categoria>
+              <Valor>{convertirAMoneda(elemento.cantidad)}</Valor>
+            </ElementoListaCategorias>
+          );
+        })}
+      </ListaDeCategorias>
+
       <BarraTotalGastado />
     </>
   );
