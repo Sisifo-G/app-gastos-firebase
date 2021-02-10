@@ -4,10 +4,11 @@ import BtnRegresar from "../elements/BtnRegresar";
 import { Header, Titulo } from "./../elements/Header";
 import BarraTotalGastado from "./BarraTotalGastado";
 
-import useObtenerGastosDelMes from "./../hooks/useObtenerGastosDelMes";
+import useObtenerGastosMesPorCategoria from "./../hooks/useObtenerGastosMesPorCategoria";
 
 const GastosPorCategoria = () => {
-  useObtenerGastosDelMes();
+  const gastos = useObtenerGastosMesPorCategoria();
+  console.log(gastos);
   return (
     <>
       <Helmet>
